@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1684
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "my_opencvsharptest", "my_opencvsharptest\my_opencvsharptest.csproj", "{2D03F4EF-1E52-4076-82BF-7187D4A32FA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D03F4EF-1E52-4076-82BF-7187D4A32FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D03F4EF-1E52-4076-82BF-7187D4A32FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D03F4EF-1E52-4076-82BF-7187D4A32FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D03F4EF-1E52-4076-82BF-7187D4A32FA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA043989-BF73-4A8F-B4D6-C58DBA9A108A}
+	EndGlobalSection
+EndGlobal
