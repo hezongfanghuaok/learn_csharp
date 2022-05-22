@@ -236,5 +236,37 @@ namespace my_opencvsharptest
             pictureBox1.Image = Zmap_bitmap;
         }
 
+        private void find_chess_Click(object sender, EventArgs e)
+        {
+            Size patternSize = new Size(9, 6);
+            var image = new Mat("./img/chess.jpg");
+            pictureBox2.Image = BitmapConverter.ToBitmap(image);
+            var corners = new Mat();
+            
+            bool found = Cv2.FindChessboardCorners(image, patternSize, corners);
+            //corners.Reshape(2);
+            Point2f[] point_corn=new Point2f[corners.Height];
+
+            for(int i=0;i< corners.Height;i++)
+            {
+                point_corn[i]= corners.Get<Point2f>(0,i);
+                //point_corn[i+1] = corners.At<Point2f>(0, 1);
+            }
+            
+            Size winSize = new Size(11, 11),zero=new Size(-1,-1);
+            TermCriteria criteria = new TermCriteria(CriteriaTypes.Eps | CriteriaTypes.MaxIter, 10, 1.0);
+            if (found==true)
+            {
+                
+                Cv2.CornerSubPix(image, point_corn, winSize, zero, criteria);
+            }
+            Cv2.DrawChessboardCorners(image, patternSize, corners, found);
+            pictureBox1.Image = BitmapConverter.ToBitmap(image);
+        }
+
+        private void kmeans_test_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
