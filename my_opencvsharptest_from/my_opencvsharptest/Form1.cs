@@ -244,15 +244,25 @@ namespace my_opencvsharptest
             var corners = new Mat();
             
             bool found = Cv2.FindChessboardCorners(image, patternSize, corners);
+
+            Mat Hom_mat2d = Cv2.EstimateAffine2D(corners, corners);
+
+            using (var fs = new FileStorage("./testchess.yaml", FileStorage.Modes.Write))
+            {
+                fs.Add("Hom_mat2d").Add(Hom_mat2d);
+            }
             //corners.Reshape(2);
             Point2f[] point_corn=new Point2f[corners.Height];
 
             for(int i=0;i< corners.Height;i++)
             {
-                point_corn[i]= corners.Get<Point2f>(0,i);
-                //point_corn[i+1] = corners.At<Point2f>(0, 1);
+                point_corn[i]= corners.Get<Point2f>(i);
+                Vec2f a = corners.Get<Vec2f>(1);
+                float b = corners.At<float>();
             }
             
+           // Cv2.EstimateAffine2D()
+
             Size winSize = new Size(11, 11),zero=new Size(-1,-1);
             TermCriteria criteria = new TermCriteria(CriteriaTypes.Eps | CriteriaTypes.MaxIter, 10, 1.0);
             if (found==true)
@@ -266,6 +276,69 @@ namespace my_opencvsharptest
 
         private void kmeans_test_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void codetest_Click(object sender, EventArgs e)
+        {
+            //mat1是用来存九个像素坐标的，mat2用来存机器人坐标
+    
+                Mat mat1 = new Mat(11, 2, MatType.CV_32F); //这里MatType的解释我之前博客里有介绍
+                mat1.Set<float>(0, 0, 35);
+                mat1.Set<float>(0, 1, 25);
+                mat1.Set<float>(1, 0, 35);
+                mat1.Set<float>(1, 1, 35);
+                mat1.Set<float>(2, 0, 25);
+                mat1.Set<float>(2, 1, 35);
+                mat1.Set<float>(3, 0, 35);
+                mat1.Set<float>(3, 1, 35);
+                mat1.Set<float>(4, 0, 25);
+                mat1.Set<float>(4, 1, 35);
+                mat1.Set<float>(5, 0, 35);
+                mat1.Set<float>(5, 1, 35);
+                mat1.Set<float>(6, 0, 35);
+                mat1.Set<float>(6, 1, 35);
+                mat1.Set<float>(7, 0, 35);
+                mat1.Set<float>(7, 1, 45);
+                mat1.Set<float>(8, 0, 35);
+                mat1.Set<float>(8, 1, 45);
+
+            mat1.Set<float>(9, 0, 65);
+            mat1.Set<float>(9, 1, 45);
+            mat1.Set<float>(10, 0, 75);
+            mat1.Set<float>(10, 1, 45);
+
+            Mat mat2 = new Mat(11, 2, MatType.CV_32F);
+                mat2.Set<float>(0, 0, 65);
+                mat2.Set<float>(0, 1, 35);
+                mat2.Set<float>(1, 0, 45);
+                mat2.Set<float>(1, 1, 35);
+                mat2.Set<float>(2, 0, 35);
+                mat2.Set<float>(2, 1, 35);
+                mat2.Set<float>(3, 0, 35);
+                mat2.Set<float>(3, 1, 35);
+                mat2.Set<float>(4, 0, 35);
+                mat2.Set<float>(4, 1, 35);
+                mat2.Set<float>(5, 0, 65);
+                mat2.Set<float>(5, 1, 35);
+                mat2.Set<float>(6, 0, 35);
+                mat2.Set<float>(6, 1, 65);
+                mat2.Set<float>(7, 0, 35);
+                mat2.Set<float>(7, 1, 35);
+                mat2.Set<float>(8, 0, 75);
+                mat2.Set<float>(8, 1, 35);
+            mat2.Set<float>(9, 0, 65);
+            mat2.Set<float>(9, 1, 45);
+            mat2.Set<float>(10, 0, 75);
+            mat2.Set<float>(10, 1, 45);
+
+            Mat Hom_mat2d = Cv2.EstimateAffine2D(mat1, mat2);
+            using (var fs = new FileStorage("./test.yaml", FileStorage.Modes.Write))
+            {
+                fs.Add("Hom_mat2d").Add(Hom_mat2d);
+            }
+
+
 
         }
     }

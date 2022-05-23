@@ -43,6 +43,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.find_chess = new System.Windows.Forms.Button();
             this.kmeans_test = new System.Windows.Forms.Button();
+            this.codetest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -51,10 +52,10 @@
             // button_openimg
             // 
             this.button_openimg.AutoSize = true;
-            this.button_openimg.Location = new System.Drawing.Point(60, 54);
-            this.button_openimg.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_openimg.Location = new System.Drawing.Point(45, 43);
+            this.button_openimg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_openimg.Name = "button_openimg";
-            this.button_openimg.Size = new System.Drawing.Size(87, 28);
+            this.button_openimg.Size = new System.Drawing.Size(65, 22);
             this.button_openimg.TabIndex = 0;
             this.button_openimg.Text = "读图展示";
             this.button_openimg.UseVisualStyleBackColor = true;
@@ -63,10 +64,10 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(703, 554);
+            this.pictureBox1.Size = new System.Drawing.Size(527, 443);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -76,10 +77,10 @@
             // 
             // button_thread
             // 
-            this.button_thread.Location = new System.Drawing.Point(60, 105);
-            this.button_thread.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_thread.Location = new System.Drawing.Point(45, 84);
+            this.button_thread.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_thread.Name = "button_thread";
-            this.button_thread.Size = new System.Drawing.Size(87, 30);
+            this.button_thread.Size = new System.Drawing.Size(65, 24);
             this.button_thread.TabIndex = 2;
             this.button_thread.Text = "二值图像";
             this.button_thread.UseVisualStyleBackColor = true;
@@ -87,10 +88,10 @@
             // 
             // button_count
             // 
-            this.button_count.Location = new System.Drawing.Point(60, 160);
-            this.button_count.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button_count.Location = new System.Drawing.Point(45, 128);
+            this.button_count.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button_count.Name = "button_count";
-            this.button_count.Size = new System.Drawing.Size(87, 30);
+            this.button_count.Size = new System.Drawing.Size(65, 24);
             this.button_count.TabIndex = 3;
             this.button_count.Text = "边沿查找";
             this.button_count.UseVisualStyleBackColor = true;
@@ -103,10 +104,10 @@
             this.时间});
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(203, 41);
-            this.listView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listView1.Location = new System.Drawing.Point(152, 33);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(291, 968);
+            this.listView1.Size = new System.Drawing.Size(219, 775);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -123,10 +124,10 @@
             // 
             // mo
             // 
-            this.mo.Location = new System.Drawing.Point(60, 226);
-            this.mo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.mo.Location = new System.Drawing.Point(45, 181);
+            this.mo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mo.Name = "mo";
-            this.mo.Size = new System.Drawing.Size(107, 30);
+            this.mo.Size = new System.Drawing.Size(80, 24);
             this.mo.TabIndex = 5;
             this.mo.Text = "形态学变换";
             this.mo.UseVisualStyleBackColor = true;
@@ -135,10 +136,9 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(501, 140);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(376, 112);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(708, 559);
+            this.panel1.Size = new System.Drawing.Size(531, 447);
             this.panel1.TabIndex = 6;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
@@ -147,10 +147,10 @@
             // 
             // template_button
             // 
-            this.template_button.Location = new System.Drawing.Point(60, 281);
-            this.template_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.template_button.Location = new System.Drawing.Point(45, 225);
+            this.template_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.template_button.Name = "template_button";
-            this.template_button.Size = new System.Drawing.Size(107, 30);
+            this.template_button.Size = new System.Drawing.Size(80, 24);
             this.template_button.TabIndex = 7;
             this.template_button.Text = "模板匹配";
             this.template_button.UseVisualStyleBackColor = true;
@@ -160,10 +160,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(696, 66);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(522, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 34);
+            this.label1.Size = new System.Drawing.Size(184, 27);
             this.label1.TabIndex = 8;
             this.label1.Text = "可变图像pic1";
             // 
@@ -171,29 +170,28 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(1395, 66);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(1046, 53);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 34);
+            this.label2.Size = new System.Drawing.Size(128, 27);
             this.label2.TabIndex = 9;
             this.label2.Text = "图像pic2";
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.pictureBox2.Location = new System.Drawing.Point(1227, 140);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Location = new System.Drawing.Point(920, 112);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(659, 554);
+            this.pictureBox2.Size = new System.Drawing.Size(494, 443);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
             // 
             // find_chess
             // 
-            this.find_chess.Location = new System.Drawing.Point(60, 333);
+            this.find_chess.Location = new System.Drawing.Point(45, 266);
+            this.find_chess.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.find_chess.Name = "find_chess";
-            this.find_chess.Size = new System.Drawing.Size(107, 30);
+            this.find_chess.Size = new System.Drawing.Size(80, 24);
             this.find_chess.TabIndex = 11;
             this.find_chess.Text = "棋盘格识别";
             this.find_chess.UseVisualStyleBackColor = true;
@@ -201,19 +199,31 @@
             // 
             // kmeans_test
             // 
-            this.kmeans_test.Location = new System.Drawing.Point(60, 380);
+            this.kmeans_test.Location = new System.Drawing.Point(45, 304);
+            this.kmeans_test.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kmeans_test.Name = "kmeans_test";
-            this.kmeans_test.Size = new System.Drawing.Size(107, 31);
+            this.kmeans_test.Size = new System.Drawing.Size(80, 25);
             this.kmeans_test.TabIndex = 12;
             this.kmeans_test.Text = "kmeans";
             this.kmeans_test.UseVisualStyleBackColor = true;
             this.kmeans_test.Click += new System.EventHandler(this.kmeans_test_Click);
             // 
+            // codetest
+            // 
+            this.codetest.Location = new System.Drawing.Point(35, 534);
+            this.codetest.Name = "codetest";
+            this.codetest.Size = new System.Drawing.Size(75, 23);
+            this.codetest.TabIndex = 13;
+            this.codetest.Text = "测试代码";
+            this.codetest.UseVisualStyleBackColor = true;
+            this.codetest.Click += new System.EventHandler(this.codetest_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1919, 1024);
+            this.ClientSize = new System.Drawing.Size(1439, 819);
+            this.Controls.Add(this.codetest);
             this.Controls.Add(this.kmeans_test);
             this.Controls.Add(this.find_chess);
             this.Controls.Add(this.pictureBox2);
@@ -226,7 +236,7 @@
             this.Controls.Add(this.button_count);
             this.Controls.Add(this.button_thread);
             this.Controls.Add(this.button_openimg);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -254,6 +264,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button find_chess;
         private System.Windows.Forms.Button kmeans_test;
+        private System.Windows.Forms.Button codetest;
     }
 }
 
