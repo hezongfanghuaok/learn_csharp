@@ -341,5 +341,184 @@ namespace my_opencvsharptest
 
 
         }
+
+        private void model_template_pro_Click(object sender, EventArgs e)
+        {
+            // 读取源图像和模板图像
+            Mat src = Cv2.ImRead(@"E:\github\testimg\model_set\a.png", ImreadModes.Grayscale);
+            pictureBox1.Image = BitmapConverter.ToBitmap(src);
+            Mat templ = Cv2.ImRead(@"E:\github\testimg\model_set\aa.png", ImreadModes.Grayscale);
+            pictureBox2.Image = BitmapConverter.ToBitmap(templ);
+            // 定义搜索范围，可以调整大小和角度
+            var templateSize = new Size(templ.Cols, templ.Rows);
+            var searchSize = new Size(src.Cols - templ.Cols + 1, src.Rows - templ.Rows + 1);
+            var center = new Point2f(templateSize.Width / 2f, templateSize.Height / 2f);
+            var rangeScale = new Range(99, 101); // 可调整大小范围
+            var rangeAngle = new Range(-180, 180); // 可调整角度范围
+
+            // 创建结果图像
+            Mat result = new Mat(searchSize, MatType.CV_32FC1);
+
+            // 执行模板匹配算法，但这次使用多尺度和旋转的模板图像
+            for (int s = rangeScale.Start; s < rangeScale.End; s += 5) // 每5个像素进行缩放
+            {
+                for (int a = rangeAngle.Start; a < rangeAngle.End; a += 1) // 每1度进行旋转
+                {
+                    // 计算旋转和缩放变换矩阵
+                    var rotMat = Cv2.GetRotationMatrix2D(center, a, s / 100.0);
+                    var scaledTpl = new Mat();
+                    Cv2.WarpAffine(templ, scaledTpl, rotMat, templateSize, InterpolationFlags.Linear);
+                    pictureBox2.Image = BitmapConverter.ToBitmap(templ);
+                    // 执行模板匹配算法，并将匹配结果缩放回原始大小
+                    Mat resultScaled = new Mat();
+                    Cv2.MatchTemplate(src, scaledTpl, resultScaled, TemplateMatchModes.CCoeffNormed);
+                    Cv2.Resize(resultScaled, result, searchSize, 0, 0, InterpolationFlags.Linear);
+
+                    // 查找最大匹配值及其位置
+                    double minVal, maxVal;
+                    OpenCvSharp.Point minLoc, maxLoc;
+                    Cv2.MinMaxLoc(result, out minVal, out maxVal, out minLoc, out maxLoc);
+
+                    // 显示匹配结果
+                    var rect = new Rect(maxLoc, new Size(templ.Cols, templ.Rows));
+                    Cv2.Rectangle(src, rect, Scalar.Red, 2);
+                    pictureBox1.Image = BitmapConverter.ToBitmap(src);
+                    //Cv2.ImShow("Match Result", src);
+                     Cv2.WaitKey(0);
+                }
+            }
+        }
+
+        private void model_pyraid_Click(object sender, EventArgs e)
+        {
+            //读取源图像和模板图像
+            Mat source = Cv2.ImRead(@"E:\github\testimg\model_set\a.png", ImreadModes.Grayscale);
+            pictureBox1.Image = BitmapConverter.ToBitmap(source);
+            Mat template = Cv2.ImRead(@"E:\github\testimg\model_set\aa.png", ImreadModes.Grayscale);
+            pictureBox2.Image = BitmapConverter.ToBitmap(template);
+
+           
+
+            // Create image pyramid for source and template images
+           // List<Mat> sourcePyramid = CreatePyramid(source, 4);
+            List<Mat> templatePyramid = CreatePyramid(template, 4);
+
+            // Iterate over each level of the pyramid
+            for (int level = 3; level >= 0; level--)
+            {
+                // Calculate the scaling factor for the current pyramid level
+                double scale = Math.Pow(2, level);
+
+                // Resize the template image to match the current pyramid level
+                Mat resizedTemplate = templatePyramid[level];
+
+                // Apply Canny edge detection to the source and template images
+                Mat sourceEdges = Canny(source, 50, 150);
+                Mat templateEdges = Canny(resizedTemplate, 50, 150);
+
+                // Perform template matching on the edge images
+                Mat result = new Mat();
+                Cv2.MatchTemplate(sourceEdges, templateEdges, result, TemplateMatchModes.CCoeffNormed);
+                
+                // Find the maximum correlation coefficient and its location in the result image
+                double maxVal;
+                OpenCvSharp.Point maxLoc;
+                Cv2.MinMaxLoc(result, out double _, out maxVal, out _, out maxLoc);
+
+                // Convert the location to the coordinate system of the original source image
+                OpenCvSharp.Point matchLoc = new OpenCvSharp.Point((int)(maxLoc.X * scale), (int)(maxLoc.Y * scale));
+
+                // Draw a rectangle around the matched region on the source image
+                Rect matchRect = new Rect(matchLoc, new Size(resizedTemplate.Width, resizedTemplate.Height));
+                Cv2.Rectangle(source, matchRect, Scalar.Red, 2);
+            }
+
+            // Display the result
+            Cv2.ImShow("Result", source);
+            Cv2.WaitKey();
+        }
+        // Creates an image pyramid with the specified number of levels
+        static List<Mat> CreatePyramid(Mat image, int levels)
+        {
+            List<Mat> pyramid = new List<Mat> { image };
+
+            for (int i = 1; i <= levels; i++)
+            {
+                Mat downsampled = new Mat();
+                Cv2.PyrDown(pyramid[i - 1], downsampled);
+                
+                pyramid.Add(downsampled);
+            }
+
+            return pyramid;
+        }
+
+        // Applies Canny edge detection to an image
+        static Mat Canny(Mat image, double threshold1, double threshold2)
+        {
+            Mat edges = new Mat();
+            Cv2.Canny(image, edges, threshold1, threshold2);
+            return edges;
+        }
+
+        private void model_feature_Click(object sender, EventArgs e)
+        {
+            //// 读入原始图像和模板图像
+            //Mat srcImg = Cv2.ImRead("原始图像路径");
+            //Mat templateImg = Cv2.ImRead("模板图像路径");
+
+            //// 将它们转换成灰度图像
+            //Mat graySrcImg = new Mat();
+            //Mat grayTemplateImg = new Mat();
+            //Cv2.CvtColor(srcImg, graySrcImg, ColorConversionCodes.BGR2GRAY);
+            //Cv2.CvtColor(templateImg, grayTemplateImg, ColorConversionCodes.BGR2GRAY);
+
+            //// 提取模板图像和原始图像的特征点和特征描述符
+            //KeyPoint[] templateKeypoints, srcKeypoints;
+            //Mat templateDescriptors=new Mat(), srcDescriptors = new Mat();
+            //var orb = ORB.Create();
+            //orb.DetectAndCompute(grayTemplateImg, null, out templateKeypoints, templateDescriptors);
+            //orb.DetectAndCompute(graySrcImg, null, out srcKeypoints, srcDescriptors);
+
+            //// 使用特征描述符匹配算法进行匹配
+            //DMatch matches=new Mat();
+            //var matcher = DescriptorMatcher.Create("BFMatcher");
+            //matcher.Match(templateDescriptors, srcDescriptors, matches);
+
+            //// 剔除错误匹配
+            //double minDistance = double.MaxValue;
+            //double secondMinDistance = double.MaxValue;
+            //for (int i = 0; i < matches.Length; i++)
+            //{
+            //    double distance = matches[i].Distance;
+            //    if (distance < minDistance)
+            //    {
+            //        secondMinDistance = minDistance;
+            //        minDistance = distance;
+            //    }
+            //    else if (distance < secondMinDistance)
+            //    {
+            //        secondMinDistance = distance;
+            //    }
+            //}
+
+            //List<DMatch> goodMatches = new List<DMatch>();
+            //for (int i = 0; i < matches.Length; i++)
+            //{
+            //    if (matches[i].Distance <= Math.Max(2 * minDistance, 0.02))
+            //    {
+            //        goodMatches.Add(matches[i]);
+            //    }
+            //}
+
+            //// 绘制匹配结果
+            //Mat resultImg = new Mat();
+            //Cv2.DrawMatches(templateImg, templateKeypoints, srcImg, srcKeypoints, goodMatches.ToArray(), resultImg);
+
+            //// 显示匹配效果
+            //Cv2.ImShow("Result", resultImg);
+            //Cv2.WaitKey();
+        }
     }
 }
+

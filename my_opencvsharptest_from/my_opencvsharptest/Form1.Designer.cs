@@ -44,6 +44,9 @@
             this.find_chess = new System.Windows.Forms.Button();
             this.kmeans_test = new System.Windows.Forms.Button();
             this.codetest = new System.Windows.Forms.Button();
+            this.model_template_pro = new System.Windows.Forms.Button();
+            this.model_pyraid = new System.Windows.Forms.Button();
+            this.model_feature = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -53,7 +56,7 @@
             // 
             this.button_openimg.AutoSize = true;
             this.button_openimg.Location = new System.Drawing.Point(45, 43);
-            this.button_openimg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_openimg.Margin = new System.Windows.Forms.Padding(2);
             this.button_openimg.Name = "button_openimg";
             this.button_openimg.Size = new System.Drawing.Size(65, 22);
             this.button_openimg.TabIndex = 0;
@@ -65,7 +68,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.pictureBox1.Location = new System.Drawing.Point(2, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(527, 443);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -78,7 +81,7 @@
             // button_thread
             // 
             this.button_thread.Location = new System.Drawing.Point(45, 84);
-            this.button_thread.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_thread.Margin = new System.Windows.Forms.Padding(2);
             this.button_thread.Name = "button_thread";
             this.button_thread.Size = new System.Drawing.Size(65, 24);
             this.button_thread.TabIndex = 2;
@@ -89,7 +92,7 @@
             // button_count
             // 
             this.button_count.Location = new System.Drawing.Point(45, 128);
-            this.button_count.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_count.Margin = new System.Windows.Forms.Padding(2);
             this.button_count.Name = "button_count";
             this.button_count.Size = new System.Drawing.Size(65, 24);
             this.button_count.TabIndex = 3;
@@ -105,7 +108,7 @@
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(152, 33);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(219, 775);
             this.listView1.TabIndex = 4;
@@ -125,7 +128,7 @@
             // mo
             // 
             this.mo.Location = new System.Drawing.Point(45, 181);
-            this.mo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mo.Margin = new System.Windows.Forms.Padding(2);
             this.mo.Name = "mo";
             this.mo.Size = new System.Drawing.Size(80, 24);
             this.mo.TabIndex = 5;
@@ -148,7 +151,7 @@
             // template_button
             // 
             this.template_button.Location = new System.Drawing.Point(45, 225);
-            this.template_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.template_button.Margin = new System.Windows.Forms.Padding(2);
             this.template_button.Name = "template_button";
             this.template_button.Size = new System.Drawing.Size(80, 24);
             this.template_button.TabIndex = 7;
@@ -189,7 +192,7 @@
             // find_chess
             // 
             this.find_chess.Location = new System.Drawing.Point(45, 266);
-            this.find_chess.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.find_chess.Margin = new System.Windows.Forms.Padding(2);
             this.find_chess.Name = "find_chess";
             this.find_chess.Size = new System.Drawing.Size(80, 24);
             this.find_chess.TabIndex = 11;
@@ -200,7 +203,7 @@
             // kmeans_test
             // 
             this.kmeans_test.Location = new System.Drawing.Point(45, 304);
-            this.kmeans_test.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.kmeans_test.Margin = new System.Windows.Forms.Padding(2);
             this.kmeans_test.Name = "kmeans_test";
             this.kmeans_test.Size = new System.Drawing.Size(80, 25);
             this.kmeans_test.TabIndex = 12;
@@ -218,11 +221,47 @@
             this.codetest.UseVisualStyleBackColor = true;
             this.codetest.Click += new System.EventHandler(this.codetest_Click);
             // 
+            // model_template_pro
+            // 
+            this.model_template_pro.Location = new System.Drawing.Point(45, 348);
+            this.model_template_pro.Margin = new System.Windows.Forms.Padding(2);
+            this.model_template_pro.Name = "model_template_pro";
+            this.model_template_pro.Size = new System.Drawing.Size(80, 24);
+            this.model_template_pro.TabIndex = 14;
+            this.model_template_pro.Text = "模板匹配pro";
+            this.model_template_pro.UseVisualStyleBackColor = true;
+            this.model_template_pro.Click += new System.EventHandler(this.model_template_pro_Click);
+            // 
+            // model_pyraid
+            // 
+            this.model_pyraid.Location = new System.Drawing.Point(45, 395);
+            this.model_pyraid.Margin = new System.Windows.Forms.Padding(2);
+            this.model_pyraid.Name = "model_pyraid";
+            this.model_pyraid.Size = new System.Drawing.Size(80, 24);
+            this.model_pyraid.TabIndex = 15;
+            this.model_pyraid.Text = "模板匹配_金";
+            this.model_pyraid.UseVisualStyleBackColor = true;
+            this.model_pyraid.Click += new System.EventHandler(this.model_pyraid_Click);
+            // 
+            // model_feature
+            // 
+            this.model_feature.Location = new System.Drawing.Point(11, 438);
+            this.model_feature.Margin = new System.Windows.Forms.Padding(2);
+            this.model_feature.Name = "model_feature";
+            this.model_feature.Size = new System.Drawing.Size(114, 24);
+            this.model_feature.TabIndex = 16;
+            this.model_feature.Text = "模板匹配_特征";
+            this.model_feature.UseVisualStyleBackColor = true;
+            this.model_feature.Click += new System.EventHandler(this.model_feature_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1439, 819);
+            this.Controls.Add(this.model_feature);
+            this.Controls.Add(this.model_pyraid);
+            this.Controls.Add(this.model_template_pro);
             this.Controls.Add(this.codetest);
             this.Controls.Add(this.kmeans_test);
             this.Controls.Add(this.find_chess);
@@ -236,7 +275,7 @@
             this.Controls.Add(this.button_count);
             this.Controls.Add(this.button_thread);
             this.Controls.Add(this.button_openimg);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -265,6 +304,9 @@
         private System.Windows.Forms.Button find_chess;
         private System.Windows.Forms.Button kmeans_test;
         private System.Windows.Forms.Button codetest;
+        private System.Windows.Forms.Button model_template_pro;
+        private System.Windows.Forms.Button model_pyraid;
+        private System.Windows.Forms.Button model_feature;
     }
 }
 
